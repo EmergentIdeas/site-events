@@ -29,11 +29,7 @@
     	
     	<!-- For the test app -->
 		<dependency org="com.emergentideas" name="page-editor" rev="latest.integration" conf="test->appdep"/>
-<<<<<<< HEAD
 		<dependency org="com.emergentideas" name="oak_stdtemplates" rev="[1.0.0.2,)" conf="test->appdep" /> 
-=======
-		<dependency org="com.emergentideas" name="oak_stdtemplates" rev="[1.0,)" conf="test->appdep" /> 
->>>>>>> 7eb8bd9ed71acb32c2277163541cb77ea79c2cca
 		<dependency org="org.hsqldb" name="hsqldb" rev="2.3.1" conf="test->default"/>
 		
 		<!-- For unit testing -->
