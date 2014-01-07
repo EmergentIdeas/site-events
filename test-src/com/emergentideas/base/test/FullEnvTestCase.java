@@ -31,27 +31,35 @@ public class FullEnvTestCase {
 	protected HandleCaller caller;
 	protected ServletContext servletContext;
 	
+	protected boolean loaded = false;
+	
 	public FullEnvTestCase() {
 		
-		try {
-			loader = new AppLoader();
-			servletContext = new TestServletContext();
+	}
+	
+	protected void init() { 
+		if(loaded == false) {
+			loaded = true;
+			try {
+				loader = new AppLoader();
+				servletContext = new TestServletContext();
+				
+				webAppLocation = new WebAppLocation(loader.getLocation());
+				webAppLocation.setServiceByType(ServletConfig.class.getName(), mock(ServletConfig.class));
+				webAppLocation.setServiceByType(ServletContext.class.getName(), servletContext);
+				
+				
+				loader.load(getInitialConfiguration(), getProjectRoot());
+				
+				
+				caller = (HandleCaller)webAppLocation.getServiceByName("request-handler");
 			
-			webAppLocation = new WebAppLocation(loader.getLocation());
-			webAppLocation.setServiceByType(ServletConfig.class.getName(), mock(ServletConfig.class));
-			webAppLocation.setServiceByType(ServletContext.class.getName(), servletContext);
-			
-			
-			loader.load(getInitialConfiguration(), getProjectRoot());
-			
-			
-			caller = (HandleCaller)webAppLocation.getServiceByName("request-handler");
-			
-			
+			}
+			catch(Exception e) {
+				throw new RuntimeException(e);
+			}
 		}
-		catch(Exception e) {
-			throw new RuntimeException(e);
-		}
+
 	}
 	
 	/**

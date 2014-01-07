@@ -1,11 +1,11 @@
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="change-me-to-project-name" default="dist" basedir=".">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="site-events" default="dist" basedir=".">
 	<!-- 
 	
 		Change the follow strings to be specific to your project:
 		
-		change/me/to/your/project/package/name
-		change-me-to-organization-name
-		change-me-to-project-name
+		com/emergentideas/siteevents
+		com.emergentideas
+		site-events
 		YOUR DESCRIPTION HERE
 		
 		
@@ -55,9 +55,9 @@
 
 	
 	<!-- properties that describe the current plugin. CHANGE THESE -->
-	<property name="app.package.root" value="change/me/to/your/project/package/name" />
+	<property name="app.package.root" value="com/emergentideas/siteevents" />
 	<!-- notice the spelling of the property name here as is used by ivy -->
-	<property name="organisation" value="change-me-to-organization-name" />
+	<property name="organisation" value="com.emergentideas" />
 	
 	<ivy:settings file="settings.xml" />
 
@@ -159,6 +159,7 @@
 			<fileset dir="${lib}" >
 				<include name="*.jar"/>
 			</fileset>
+			<path location="${dist}" />
 		</path>
 		
 		<!-- Compile the java code from ${src} into ${dist} -->

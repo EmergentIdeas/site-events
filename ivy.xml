@@ -3,12 +3,12 @@
 		Below is a basic template to set up the dependencies and publication targets. You must change 
 		the following strings:
 		
-		change-me-to-organization-name
-		change-me-to-project-name
+		com.emergentideas
+		site-events
 		
 		Change them to your organization name and the name of this plugin
 	 -->
-    <info organisation="change-me-to-organization-name" module="change-me-to-project-name"/>
+    <info organisation="com.emergentideas" module="site-events"/>
     <configurations defaultconfmapping="build->*;deployment->default;test->default">
     	<conf name="build" />
     	<conf name="deployment" />
@@ -18,14 +18,18 @@
     	<conf name="empty" />
     </configurations>
     <publications>
-    	<artifact name="change-me-to-project-name" type="jar" conf="appdep" />
-    	<artifact name="change-me-to-project-name-sources" type="source" ext="jar" conf="sources"/>
+    	<artifact name="site-events" type="jar" conf="appdep" />
+    	<artifact name="site-events-sources" type="source" ext="jar" conf="sources"/>
     </publications>
     <dependencies>
     	<dependency org="com.emergentideas" name="webhandle" rev="[1.0.0.14,)" conf="build" />	
     	
+    	<dependency org="com.emergentideas" name="crud_tools" rev="[1.0.0.3,)" conf="appdep" />	
+    	
+    	
     	<!-- For the test app -->
 		<dependency org="com.emergentideas" name="page-editor" rev="latest.integration" conf="test->appdep"/>
+		<dependency org="com.emergentideas" name="oak_stdtemplates" rev="[1.0.0.2,)" conf="test->appdep" /> 
 		<dependency org="org.hsqldb" name="hsqldb" rev="2.3.1" conf="test->default"/>
 		
 		<!-- For unit testing -->
