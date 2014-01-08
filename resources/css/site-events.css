@@ -1,0 +1,123 @@
+.small-calendar {
+	position: relative;
+	width: 100%;
+}
+
+.small-calendar .day {
+	position: relative;
+	float: left;
+	width: 14%;
+	text-align: center;
+	overflow: hidden;
+}
+
+.day-boxes {
+	clear: both;
+}
+
+.day-boxes-float-clear {
+	clear: both;
+}
+
+.month-detail-calendar .day {
+	margin-bottom: 2em;
+}
+
+.month-detail-calendar .event {
+	margin-bottom: .5em;
+	margin-left: .5em;
+}
+
+.month-detail-calendar .day-number {
+	display: none;
+}
+
+.month-detail-calendar .day-date {
+	font-size: 140%;
+}
+
+.month-detail-calendar .event .time-and-title {
+	display: inline-block;
+}
+
+.month-detail-calendar .event .time {
+	display: inline-block;
+	font-weight: bold;
+}
+
+.month-detail-calendar .event .title {
+	display: inline-block;
+}
+
+.month-detail-calendar .event .location {
+	display: inline-block;
+}
+
+.month-detail-calendar .event .duration {
+	display: inline-block;
+}
+
+.period-navigation {
+	width: 100%;
+	text-align: center;
+}
+
+.period-navigation .previous-period, .period-navigation .next-period {
+	width: 40%;
+	display: inline-block;
+}
+
+.big-calendar .day {
+	position: relative;
+	float: left;
+	width: 14%;
+	text-align: center;
+	height: 10em;
+	overflow: hidden;
+	margin-bottom: .25em;
+}
+
+.big-calendar .days-of-week .day {
+	height: 1.2em;
+}
+
+.big-calendar .day-date {
+	display: none;
+}
+
+.big-calendar .day-inner-container {
+	margin: 0 .25em 0 0;
+	overflow: hidden;
+	background-color: #EEEEEE;
+	height: 100%;
+}
+
+.big-calendar .event {
+	text-align: left;
+}
+
+.big-calendar .event .time {
+	display: inline-block;
+	font-weight: bold;
+}
+
+.big-calendar .event .time-and-title {
+	display: inline-block;
+	width: 800%;
+}
+
+.big-calendar .event .title {
+	display: inline-block;
+}
+
+.big-calendar .event .location {
+	display: none;
+}
+
+.big-calendar .event .duration {
+	display: none;
+}
+
+.big-calendar .event .description {
+	display: none;
+}

@@ -1,0 +1,9 @@
+<div class="event">
+	<div class="time-and-title">
+		<div class="time">__startDate::site-events/simple-time__</div>
+		<div class="title">__title__</div>
+	</div>
+	__location??::site-events/location__
+	__endDate??::site-events/duration__
+	__description??::site-events/description__
+</div>

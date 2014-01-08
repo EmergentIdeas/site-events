@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Event {
+public class Event implements Cloneable {
 
 	@Id
 	@GeneratedValue
@@ -55,6 +55,17 @@ public class Event {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		Event e = new Event();
+		e.description = description;
+		e.endDate = endDate;
+		e.location = location;
+		e.startDate = startDate;
+		e.title = title;
+		return e;
 	}
 	
 	

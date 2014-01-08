@@ -1,0 +1,27 @@
+<h1>Events for __monthName__ __yearName__</h1>
+
+<div class="period-navigation">
+	<a class="previous-period" href="/big-calendar/__previousPeriod__">&lt;</a>
+	<a class="next-period" href="/big-calendar/__nextPeriod__">&gt;</a>
+</div>
+
+
+<div class="big-calendar">
+	<div class="days-of-week">
+		<div class="day">Sunday</div>
+		<div class="day">Monday</div>
+		<div class="day">Tuesday</div>
+		<div class="day">Wednesday</div>
+		<div class="day">Thursday</div>
+		<div class="day">Friday</div>
+		<div class="day">Saturday</div>
+	</div>
+	<div class="day-boxes">
+		__dayBoxes::site-events/big-day-box__
+	</div>
+	<div class="day-boxes-float-clear"></div>
+</div>
+
+<div class="view-other-format">
+	<a href="/event-details/__currentPeriod__">View as List</a>
+</div>

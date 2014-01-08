@@ -1,0 +1,15 @@
+<div class="small-calendar">
+	<div class="days-of-week">
+		<div class="day">S</div>
+		<div class="day">M</div>
+		<div class="day">T</div>
+		<div class="day">W</div>
+		<div class="day">T</div>
+		<div class="day">F</div>
+		<div class="day">S</div>
+	</div>
+	<div class="day-boxes">
+		__dayBoxes::site-events/small-day-box__
+	</div>
+	<div class="day-boxes-float-clear"></div>
+</div>

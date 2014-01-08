@@ -1,0 +1,18 @@
+<h1>Events for __monthName__ __yearName__</h1>
+
+<div class="period-navigation">
+	<a class="previous-period" href="/event-details/__previousPeriod__">&lt;</a>
+	<a class="next-period" href="/event-details/__nextPeriod__">&gt;</a>
+</div>
+
+<div class="view-other-format">
+	<a href="/big-calendar/__currentPeriod__">View as Calendar</a>
+</div>
+
+<div class="month-detail-calendar">
+__dayBoxes::site-events/big-day-box__
+</div>
+
+<div class="view-other-format">
+	<a href="/big-calendar/__currentPeriod__">View as Calendar</a>
+</div>

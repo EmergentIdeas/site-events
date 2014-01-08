@@ -16,6 +16,14 @@ import static org.junit.Assert.*;
 
 public class EventServiceTest extends FullEnvTestCase {
 
+	@Test
+	public void testDateFormat() throws Exception {
+		init();
+		EventService es = webAppLocation.getServiceByType(EventService.class);
+		
+		System.out.println(es.getDayBoxDateFormat().format(new Date()));
+		
+	}
 	
 	@Test
 	public void testBasicServiceCalls() throws Exception {
@@ -91,7 +99,7 @@ public class EventServiceTest extends FullEnvTestCase {
 		assertEquals("next2", next2List.get(0).getTitle());
 		
 		List<Event> thisMonth = es.getAllThisMonth();
-		List<DayBox> dayBoxes = es.createDayBoxes(DateUtils.html5MonthFormat().format(now), thisMonth);
+		List<DayBox> dayBoxes = es.createDayBoxes(DateUtils.html5MonthFormat().format(now), thisMonth, true);
 		
 		int today = es.getDayOfTheMonth(now);
 		

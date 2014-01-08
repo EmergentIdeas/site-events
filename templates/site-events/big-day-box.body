@@ -1,0 +1,10 @@
+<a id="d__dayNumber__" name="d__dayNumber__"></a>
+<div class="day">
+	<div class="day-inner-container">
+		<div class="day-number"><a href="/event-details/__currentPeriod__#d__dayNumber__">__dayNumber::site-events/no-esc__</a></div>
+		<div class="day-date">__hasEvents??dateString__</div>
+		<div class="events">
+			__events::site-events/event__
+		</div>
+	</div>
+</div>

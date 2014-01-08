@@ -1,5 +1,6 @@
 package com.emergentideas.siteevents.services;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,7 +22,11 @@ public class EventService {
 	
 	@Resource
 	protected EntityManager entityManager;
+	
+	protected String dateFormatString = "EEE, d MMM yyyy";
+	protected DateFormat dateFormat;
 
+	protected String detailsLinkPrefix = "/event-details/";
 	
 	public List<Event> all() {
 		return entityManager.createQuery("select e from " + getEventClassName() + " e", Event.class).getResultList();
@@ -96,18 +101,27 @@ public class EventService {
 		return query.getResultList();
 	}
 	
-	public List<DayBox> createDayBoxes(String month, List<Event> events) throws ParseException {
+	public List<DayBox> createDayBoxes(String month, boolean padWithBlanks) throws ParseException {
+		return createDayBoxes(month, getAllInMonth(month), padWithBlanks);
+	}
+	
+	
+	public List<DayBox> createDayBoxes(String month, List<Event> events, boolean padWithBlanks) throws ParseException {
 		List<DayBox> result = new ArrayList<DayBox>();
 		Date first = getFirstMomentOfMonth(parseMonthDate(month));
 		
 		Calendar c = Calendar.getInstance();
 		c.setTime(first);
 		
-		int dayOfWeek = c.get(Calendar.DAY_OF_WEEK) - Calendar.SUNDAY;
-		
-		// add padding days so that the first doesn't always start on sunday
-		while(dayOfWeek-- > 0) {
-			result.add(new DayBox());
+		if(padWithBlanks) {
+			int dayOfWeek = c.get(Calendar.DAY_OF_WEEK) - Calendar.SUNDAY;
+			
+			// add padding days so that the first doesn't always start on sunday
+			while(dayOfWeek-- > 0) {
+				DayBox db = new DayBox();
+				db.setDayNumber("&nbsp;");
+				result.add(db);
+			}
 		}
 		
 		sort(events);
@@ -116,6 +130,9 @@ public class EventService {
 		
 		for(int day = 1; day <= lastDay; day++) {
 			DayBox dayBox = new DayBox("" + day);
+			c.set(Calendar.DAY_OF_MONTH, day);
+			dayBox.setDetailsLink(createDetailsLink(month, day, dayBox, c.getTime()));
+			dayBox.setDateString(getDayBoxDateFormat().format(c.getTime()));
 			result.add(dayBox);
 			while(!events.isEmpty() && day == getDayOfTheMonth(events.get(0).getStartDate())) {
 				dayBox.addEvent(events.remove(0));
@@ -125,6 +142,10 @@ public class EventService {
 		return result;
 	}
 	
+	
+	protected String createDetailsLink(String month, int day, DayBox db, Date d) {
+		return detailsLinkPrefix + month + "#d" + day;
+	}
 	/**
 	 * Returns the day of the month, 1 if the date is null
 	 * @param d
@@ -138,6 +159,14 @@ public class EventService {
 		Calendar c = Calendar.getInstance();
 		c.setTime(d);
 		return c.get(Calendar.DAY_OF_MONTH);
+	}
+	
+	public DateFormat getDayBoxDateFormat() {
+		if(dateFormat == null) {
+			dateFormat = com.emergentideas.utils.DateUtils.newDateFormat(dateFormatString);
+		}
+		
+		return dateFormat;
 	}
 	
 	/**
@@ -169,4 +198,38 @@ public class EventService {
 	protected String getEventClassName() {
 		return Event.class.getName();
 	}
+
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+
+	public String getDateFormatString() {
+		return dateFormatString;
+	}
+
+	public void setDateFormatString(String dateFormatString) {
+		this.dateFormatString = dateFormatString;
+	}
+
+	public DateFormat getDateFormat() {
+		return dateFormat;
+	}
+	
+	public String getDetailsLinkPrefix() {
+		return detailsLinkPrefix;
+	}
+
+	public void setDetailsLinkPrefix(String detailsLinkPrefix) {
+		this.detailsLinkPrefix = detailsLinkPrefix;
+	}
+
+	public void setDateFormat(DateFormat dateFormat) {
+		this.dateFormat = dateFormat;
+	}
+	
+	
 }

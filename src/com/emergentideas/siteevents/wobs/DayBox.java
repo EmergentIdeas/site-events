@@ -8,6 +8,8 @@ import com.emergentideas.siteevents.data.Event;
 public class DayBox {
 	
 	protected String dayNumber = "";
+	protected String dateString;
+	protected String detailsLink;
 	
 	protected List<Event> events = new ArrayList<Event>();
 	
@@ -25,7 +27,7 @@ public class DayBox {
 		return events;
 	}
 	
-	public boolean hasEvents() {
+	public boolean getHasEvents() {
 		return !events.isEmpty();
 	}
 
@@ -35,6 +37,22 @@ public class DayBox {
 
 	public void setDayNumber(String dayNumber) {
 		this.dayNumber = dayNumber;
+	}
+
+	public String getDateString() {
+		return dateString;
+	}
+
+	public void setDateString(String dateString) {
+		this.dateString = dateString;
+	}
+
+	public String getDetailsLink() {
+		return detailsLink;
+	}
+
+	public void setDetailsLink(String detailsLink) {
+		this.detailsLink = detailsLink;
 	}
 	
 	
