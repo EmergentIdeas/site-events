@@ -13,6 +13,7 @@ __::messages__
 				<option value="WEEKDAY">week day</option>
 				<option value="WEEKENDDAY">weekend day</option>
 				<option value="WEEKLY">weekly</option>
+				<option value="YEARLY">yearly</option>
 			</select>
 		</div>
 	

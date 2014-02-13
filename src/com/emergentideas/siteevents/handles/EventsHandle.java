@@ -138,6 +138,9 @@ public class EventsHandle extends CRUDHandle<Event> {
 		else if(period == EventRepeatPeriod.WEEKLY) {
 			c.add(Calendar.DAY_OF_YEAR, 7);
 		}
+		else if(period == EventRepeatPeriod.YEARLY) {
+			c.add(Calendar.YEAR, 1);
+		}
 		else {
 			return null;
 		}
