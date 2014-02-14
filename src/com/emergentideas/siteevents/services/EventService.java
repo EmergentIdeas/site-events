@@ -95,7 +95,7 @@ public class EventService {
 	
 	public List<Event> getAllBetween(Date start, Date end) {
 		Query query = entityManager
-				.createQuery("select e from " + getEventClassName() + " e where e.startDate between :start and :end", Event.class)
+				.createQuery("select e from " + getEventClassName() + " e where e.startDate between :start and :end order by e.startDate", Event.class)
 				.setParameter("start", start)
 				.setParameter("end", end);
 		return query.getResultList();
@@ -143,15 +143,26 @@ public class EventService {
 	}
 	
 	
-	protected String createDetailsLink(String month, int day, DayBox db, Date d) {
-		return detailsLinkPrefix + month + "#d" + day;
+	public String createDetailsLink(String month, int day, DayBox db, Date d) {
+		if(month != null) {
+			return detailsLinkPrefix + month + "#d" + day;
+		}
+		if(d != null) {
+			return detailsLinkPrefix + getYearMonthString(d) + "#d" + getDayOfTheMonth(d);
+		}
+		return null;
 	}
+	
+	public String getYearMonthString(Date d) {
+		return com.emergentideas.utils.DateUtils.html5MonthFormat().format(d);
+	}
+	
 	/**
 	 * Returns the day of the month, 1 if the date is null
 	 * @param d
 	 * @return
 	 */
-	protected int getDayOfTheMonth(Date d) {
+	public int getDayOfTheMonth(Date d) {
 		if(d == null) {
 			return 1;
 		}
@@ -183,7 +194,7 @@ public class EventService {
 		entityManager.createQuery("delete from " + getEventClassName());
 	}
 	
-	protected Date setTimeToMidnight(Date d) {
+	public Date setTimeToMidnight(Date d) {
 		d = DateUtils.setHours(d, 0);
 		d = DateUtils.setMinutes(d, 0);
 		d = DateUtils.setSeconds(d, 0);

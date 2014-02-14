@@ -3,5 +3,5 @@ __::messages__
 <form action="/events/__id__" method="post" class="form-horizontal" >
 	__::site-events/event-fields__
 	<br/>
-	<button type="submit">Save</button>
+	<button class="btn btn-primary" type="submit">Save</button>
 </form>

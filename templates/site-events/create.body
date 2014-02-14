@@ -22,5 +22,5 @@ __::messages__
 			<input type="date" class="form-control" id="repeatsUntil" name="repeatsUntil" />
 		</div>
 	</div>
-	<button type="submit">Create</button>
+	<button class="btn btn-primary" type="submit">Create</button>
 </form>

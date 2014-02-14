@@ -1,0 +1,7 @@
+<div class="upcoming-event">
+	<div class="event-title">
+		<a href="__startDate::site-events/details-link__">__title__</a>
+	</div>
+	<div class="date-time">at __startDate::site-events/simple-date-time__</div>
+
+</div>
