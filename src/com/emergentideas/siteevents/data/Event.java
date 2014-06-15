@@ -2,6 +2,7 @@ package com.emergentideas.siteevents.data;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,10 +14,13 @@ public class Event implements Cloneable {
 	@GeneratedValue
 	protected Integer id;
 	
+	@Column(length = 2000)
 	protected String title;
 	protected Date startDate;
 	protected Date endDate;
+	@Column(length = 2000)
 	protected String location;
+	@Column(length = 2000)
 	protected String description;
 	
 	
